@@ -2,6 +2,7 @@ from preparation import prepare_data
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.ensemble import RandomForestRegressor
 import pickle as pkl
+from config import settings
 
 
 def build_model():
@@ -49,5 +50,5 @@ def train_model(X_train, Y_train):
 def evaluate_model(model, X_test, Y_test):
     return model.score(X_test, Y_test)
 
-def save_model(model, path='models/model'):
+def save_model(model, path=f'{settings.model_path}/{settings.model_name}'):
     pkl.dump(model, open(path, 'wb'))

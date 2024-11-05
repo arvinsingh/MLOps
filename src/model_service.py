@@ -1,13 +1,15 @@
 from pathlib import Path
 import pickle as pkl
 from model import build_model
+from config import settings
+
 class ModelService:
 
     def __init__(self):
         self.model = None
     
-    def load_model(self, model_name='rf_v1'):
-        model_path = Path(f'models/{model_name}')
+    def load_model(self):
+        model_path = Path(f'{settings.model_path}/{settings.model_name}')
 
         if not model_path.exists():
             build_model()
