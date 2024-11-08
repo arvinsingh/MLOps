@@ -1,0 +1,4 @@
+2024-11-08 02:52:53.673 | INFO     | model.model_service:load_model:16 - Loading model from model\models/rf_db_v3
+2024-11-08 02:52:53.673 | INFO     | model.model_service:load_model:31 - Loading model from model\models\rf_db_v3
+2024-11-08 02:52:53.706 | INFO     | model.model_service:predict:35 - Making predictions
+2024-11-08 02:52:53.706 | INFO     | __main__:main:25 - Predicted rent: 2408.765199029694
