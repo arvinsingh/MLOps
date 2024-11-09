@@ -1,0 +1,33 @@
+
+name: Build application
+description: This action builds the application
+
+runs:
+
+  using: 'composite'
+
+  steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-in-project: true # for caching dependencies
+      
+      - name: Load cached virtualenv
+        uses: actions/cache@v2
+        id: cache-poetry-dependencies
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+      
+      - name: Install dependencies using Poetry
+        if: steps.cache-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry run make install
+        shell: bash

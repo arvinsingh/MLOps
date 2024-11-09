@@ -1,8 +1,11 @@
-.PHONY: run install check clean runner
-.DEFAULT_GOAL := runner
+.PHONY: run-builder run-inference install check clean runner-builder runner-inference
+.DEFAULT_GOAL := runner-inference
 
-run: install
-	cd src; poetry run python runner.py;
+run-builder: install
+	cd src; poetry run python runner_builder.py;
+
+run-inference: install
+	cd src; poetry run python runner_inference.py;
 
 install:
 	poetry install
@@ -13,4 +16,6 @@ check:
 clean:
 	rm -rf `find . -type d -name __pycache__`
 
-runner: check run clean
+runner-builder: check run-builder clean
+
+runner-inference: check run-inference clean
