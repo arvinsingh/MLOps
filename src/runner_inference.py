@@ -1,11 +1,25 @@
+"""
+This module provides functionality for running
+inference on a trained ML model.
+
+This script initializes the ModelInferenceService, loads the model,
+and predicts the rent for a given set of features.
+"""
+
 from loguru import logger
 
-from model.model_service import ModelService
+from model.model_inference import ModelInferenceService
 
 
 @logger.catch
 def main():
-    ml_svc = ModelService()
+    """
+    Run the application.
+
+    Initialize the ModelInferenceService, load the ML model,
+    and log the predicted rent for a given set of features.
+    """
+    ml_svc = ModelInferenceService()
     ml_svc.load_model()
     feature_list = {
         'area': 100,
