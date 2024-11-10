@@ -21,7 +21,7 @@ runs:
           virtualenvs-in-project: true # for caching dependencies
       
       - name: Load cached virtualenv
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         id: cache-poetry-dependencies
         with:
           path: .venv
